@@ -1,0 +1,101 @@
+﻿@model PagedList.IPagedList<WebApplication1.Models.ClockDB>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @using (Html.BeginForm("Index", "Clocks", FormMethod.Get))
+    {
+    <p>
+        Catagory: @Html.DropDownList("category", "All")
+        Search: @Html.TextBox("searchString")
+        <input type="submit" value="Search" />
+    </p>
+    }
+</p>
+<table class="table col-xs-12">
+    <tr>
+        <td align="center" class="col-xs-1">
+            @Html.ActionLink("Dial Number", "Index", new { page = Model.PageNumber, sortOrder = ViewBag.DialNumberSort })
+        </td>
+        <td align="center" class="col-xs-1">
+            @Html.ActionLink("Dial Maker", "Index", new { page = Model.PageNumber, sortOrder = ViewBag.DialMakerSort })
+        </td>
+        <td align="center" class="col-xs-1">
+            @Html.ActionLink("Dial Maker Town", "Index", new { page = Model.PageNumber, sortOrder = ViewBag.DialMakerTownSort })
+        </td>
+        <td align="center" class="col-xs-1">
+            @Html.ActionLink("Clock Maker", "Index", new { page = Model.PageNumber, sortOrder = ViewBag.ClockMakerSort })
+        </td>
+        <td align="center" class="col-xs-1">
+            @Html.ActionLink("Clock Maker Town", "Index", new { page = Model.PageNumber, sortOrder = ViewBag.ClockMakerTownSort })
+        </td>
+        <td align="center" class="col-xs-1">
+            @Html.ActionLink("Clock Date", "Index", new { page = Model.PageNumber, sortOrder = ViewBag.ClockDateSort })
+        </td>
+        <td align="center" class="col-xs-1">
+            @Html.ActionLink("Dial Date", "Index", new { page = Model.PageNumber, sortOrder = ViewBag.DialDateSort })
+        </td>
+        <td align="center" class="col-xs-1">
+            @Html.ActionLink("Dial Type", "Index", new { page = Model.PageNumber, sortOrder = ViewBag.DialTypeSort })
+        </td>
+        <td align="center" class="col-xs-1">
+            @Html.ActionLink("Graphics", "Index", new { page = Model.PageNumber, sortOrder = ViewBag.GraphicsSort })
+        </td>
+        <td align="center" class="col-xs-1">
+            @Html.ActionLink("Hemispheres", "Index", new { page = Model.PageNumber, sortOrder = ViewBag.HemispheresSort })
+        </td>
+        <td align="center" class="col-xs-1">
+            @Html.ActionLink("Description", "Index", new { page = Model.PageNumber, sortOrder = ViewBag.DescriptionSort })
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td align="center" class="col-xs-1">
+            @Html.DisplayFor(modelItem => item.DialNumber)
+        </td>
+        <td align="center" class="col-xs-1">
+            @Html.DisplayFor(modelItem => item.DialMaker)
+        </td>
+        <td align="center" class="col-xs-1">
+            @Html.DisplayFor(modelItem => item.DialMakerTown)
+        </td>
+        <td align="center" class="col-xs-1">
+            @Html.DisplayFor(modelItem => item.ClockMaker)
+        </td>
+        <td align="center" class="col-xs-1">
+            @Html.DisplayFor(modelItem => item.ClockMakerTown)
+        </td>
+        <td align="center" class="col-xs-1">
+            @Html.DisplayFor(modelItem => item.ClockDate)
+        </td>
+        <td align="center" class="col-xs-1">
+            @Html.DisplayFor(modelItem => item.DialDate)
+        </td>
+        <td align="center" class="col-xs-1">
+            @Html.DisplayFor(modelItem => item.DialType)
+        </td>
+        <td align="center" class="col-xs-1">
+            @Html.DisplayFor(modelItem => item.Graphics)
+        </td>
+        <td align="center" class="col-xs-1">
+            @Html.DisplayFor(modelItem => item.Hemispheres)
+        </td>
+        <td align="center" class="col-xs-2">
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { id = item.ID })
+        </td>
+    </tr>
+}
+</table>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, searchString = ViewBag.CurrentFilter, sortOrder = ViewBag.CurrentSort}))

@@ -1,0 +1,166 @@
+﻿@model WebApplication1.Models.ClockDB
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<form asp-action="Create">
+    <div class="form-horizontal">
+        <h4>ClockDial</h4>
+        <hr />
+        <div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="ClockDate" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="ClockDate" class="form-control" />
+                <span asp-validation-for="ClockDate" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="ClockMaker" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="ClockMaker" class="form-control" />
+                <span asp-validation-for="ClockMaker" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="ClockMakerTown" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="ClockMakerTown" class="form-control" />
+                <span asp-validation-for="ClockMakerTown" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Description" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="DialDate" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="DialDate" class="form-control" />
+                <span asp-validation-for="DialDate" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="DialMaker" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="DialMaker" class="form-control" />
+                <span asp-validation-for="DialMaker" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="DialMakerTown" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="DialMakerTown" class="form-control" />
+                <span asp-validation-for="DialMakerTown" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="FalsePlate" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="FalsePlate" class="form-control" />
+                <span asp-validation-for="FalsePlate" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Graphics" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                @{
+                    List<SelectListItem> listItems = new List<SelectListItem>();
+                    listItems.Add(new SelectListItem
+                    {
+                        Text = "Roman Straight",
+                        Value = "Roman Straight",
+                        Selected = true
+                    });
+                    listItems.Add(new SelectListItem
+                    {
+                        Text = "Roman Tumbling",
+                        Value = "Roman Tumbling",
+                    });
+                    listItems.Add(new SelectListItem
+                    {
+                        Text = "Roman Arabic Straight",
+                        Value = "Roman Arabic Straight"
+                    });
+                    listItems.Add(new SelectListItem
+                    {
+                        Text = "Roman Arabic Tumbling",
+                        Value = "Roman Arabic Tumbling"
+                    });
+                    listItems.Add(new SelectListItem
+                    {
+                        Text = "Arabic Flared Straight",
+                        Value = "Arabic Flared Straight"
+                    });
+                    listItems.Add(new SelectListItem
+                    {
+                        Text = "Arabic Flared Tumbling",
+                        Value = "Arabic Flared Tumbling"
+                    });
+                    listItems.Add(new SelectListItem
+                    {
+                        Text = "Arabic Straight",
+                        Value = "Arabic Straight"
+                    });
+                    listItems.Add(new SelectListItem
+                    {
+                        Text = "Arabic Tumbling",
+                        Value = "Arabic Tumbling"
+                    });
+
+                }
+
+                @Html.DropDownList("Dropdown List", listItems, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Hemispheres" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Hemispheres" class="form-control" />
+                <span asp-validation-for="Hemispheres" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="MoonDialFace" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="MoonDialFace" class="form-control" />
+                <span asp-validation-for="MoonDialFace" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="MoonDialScene1" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="MoonDialScene1" class="form-control" />
+                <span asp-validation-for="MoonDialScene1" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="MoonDialScene2" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="MoonDialScene2" class="form-control" />
+                <span asp-validation-for="MoonDialScene2" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

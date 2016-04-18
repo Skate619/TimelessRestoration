@@ -1,0 +1,58 @@
+﻿@model WebApplication1.Models.ClockDB
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "Details";
+    string imagePath = "\\Content/Images/";
+    string tempPath = Model.DialNumber;
+    if (Model.DialNumber != null)
+    {
+        if (Model.DialNumber.Length <= 4)
+        {
+            int length = 4 - Model.DialNumber.Length;
+            for (int i = 0; i < length; ++i)
+            {
+                imagePath = imagePath + "0";
+            }
+        }
+        imagePath = imagePath + tempPath;
+    }
+}
+<ul id="menu" class="col-xs-12" align="center" style="padding-bottom: 5px">
+    <li>@Html.ActionLink("Back to List", "Index")</li>
+</ul>
+<h2 align="center">Details</h2>
+<div>
+    <hr />
+    <dl align="center">
+        <dt>@Html.DisplayNameFor(model => model.AssociatedDials)</dt>
+        <dd>@Html.DisplayFor(model => model.AssociatedDials)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.FalsePlate)</dt>
+        <dd>@Html.DisplayFor(model => model.FalsePlate)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.MoonDialFace)</dt>
+        <dd>@Html.DisplayFor(model => model.MoonDialFace)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.MoonDialScene1)</dt>
+        <dd>@Html.DisplayFor(model => model.MoonDialScene1)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.MoonDialScene2)</dt>
+        <dd>@Html.DisplayFor(model => model.MoonDialScene2)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.DateDial)</dt>
+        <dd>@Html.DisplayFor(model => model.DateDial)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.SecondsDial)</dt>
+        <dd>@Html.DisplayFor(model => model.SecondsDial)</dd>
+
+        <dt>Image</dt>
+    </dl>
+    <div class="col-xs-8 col-xs-offset-2">
+    @{
+        if (Model.DialNumber != null)
+        {
+            <img src="@(imagePath).jpg" class="img-responsive" />
+        }
+    }
+    </div>
+</div>
